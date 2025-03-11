@@ -12,7 +12,7 @@ const Hero = () => {
                 <p>OUR BESTSELLERS</p>
                 </div>
                 <h1 className='prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed'>Latest Arrivals</h1>
-                <div className='flex flex-row'>
+                <div className='flex items-center gap-2'>
                 <p>Shop Now</p>
                 <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
                 </div>
