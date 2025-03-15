@@ -13,7 +13,7 @@ const Navbar = () => {
           <p>HOME</p>
           <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
         </NavLink>
-        <NavLink to='/collection' className='flex flex-col justify-center items-center gap-1'>
+        <NavLink to='/collections' className='flex flex-col justify-center items-center gap-1'>
           <p>COLLECTION</p>
           <hr className=' w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
         </NavLink>
