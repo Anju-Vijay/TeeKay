@@ -11,17 +11,19 @@ import PlaceOrder from './pages/PlaceOrder'
 import Cart from './pages/Cart'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Search from  './components/Search'
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <Navbar/>
+      <Search/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/collections' element={<Collections/>}/>
-        <Route path='/product' element={<Product/>}/>
+        <Route path='/product/:productId' element={<Product/>}/>
         <Route path='/orders' element={<Orders/>}/>
         <Route path='/placeorder' element={<PlaceOrder/>}/>
         <Route path='/cart' element={<Cart/>}/>
