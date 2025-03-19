@@ -2,6 +2,7 @@ import React, { useContext , useEffect, useState} from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { useParams } from 'react-router-dom';
 import { assets } from '../assets/assets';
+import RelatedProducts from '../components/RelatedProducts';
 
 const Product = () => {
   const [productData,setProductData]=useState(false);
@@ -82,8 +83,9 @@ console.log(size)
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sequi perferendis dignissimos sit, rem nam quas commodi odit amet necessitatibus temporibus iusto quia assumenda? Amet alias libero minus cupiditate natus!</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, iste quae id illo culpa nostrum tempore adipisci. Itaque porro non voluptatibus animi eos rem, fuga, perspiciatis quidem quibusdam sed deserunt!</p>
         </div>
-
       </div>
+      {/*----------Display Related Products---------- */}
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory}/>
     </div>
   ): <div className='opacity-0'></div>
 }
