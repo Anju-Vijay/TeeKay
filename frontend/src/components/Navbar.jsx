@@ -5,7 +5,7 @@ import {NavLink, Link} from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
-  const {setShowSearch}=useContext(ShopContext)
+  const {setShowSearch, getCartCount}=useContext(ShopContext)
   let [visible, setVisible]=useState(false)
   return (
     <div className='flex items-center py-5 font-medium justify-between'>
@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
         <Link to='/cart' className='relative'>
           <img  className='w-4 min-w-4 cursor-pointer' src={assets.cart_icon} alt="cart icon" />
-          <p className='absolute text-[8px] bg-black text-white aspect-square rounded-full  right-[-5px] top-[12px] w-4 text-center leading-4 '>10</p>
+          <p className='absolute text-[8px] bg-black text-white aspect-square rounded-full  right-[-5px] top-[12px] w-4 text-center leading-4 '>{getCartCount()}</p>
         </Link>
         <img onClick={()=>setVisible(true)} className='w-4 sm:hidden cursor-pointer' src={assets.menu_icon} alt='Menu icon'/>
       </div>

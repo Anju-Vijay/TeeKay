@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createContext,useState} from 'react'
 
 export const ShopContext=createContext()
 import {products} from '../assets/assets'
+import { toast } from 'react-toastify'
 
 
 const ShopContextProvider = (props) => {
@@ -10,8 +11,58 @@ const ShopContextProvider = (props) => {
     const delivery_fee=10;
     const [search, setSearch]=useState('')
     const [showSearch, setShowSearch]=useState(false)
+    const [cartItems,setCartItems]=useState({})
+    
+    const addToCart=async(itemId,size)=>{
+        
+        if(!size){
+            toast.error('Select Product Size');
+            return;
+        }
+
+        let cartData=structuredClone(cartItems)
+        if(cartData[itemId]){
+            if(cartData[itemId][size]){
+                cartData[itemId][size]+=1;
+            }else{
+                cartData[itemId][size]=1;
+            }
+        }else{
+            cartData[itemId]={};
+            cartData[itemId][size]=1;
+        }
+        setCartItems(cartData)
+        toast.success('Item added to cart');
+    }   
+    const getCartCount=()=>{
+        let totalCount=0;
+        for(const items in cartItems){
+            for(const item in cartItems[items]){
+                try{
+                    if(cartItems[items][item]>0){
+                        totalCount +=cartItems[items][item];
+
+                    }
+                }catch(error){
+
+                }    
+            }
+        }
+        return totalCount;
+    }
+
+    const updateQuantity=async (itemId,size,quantity)=>{
+        const cartData=structuredClone(cartItems);
+        if(cartData[itemId]){
+            cartData[itemId][size]=quantity;
+        }
+        setCartItems(cartData);
+    }
+   
     const value={
-        products,currency,delivery_fee, search,setSearch,showSearch,setShowSearch
+        products,currency,delivery_fee, 
+        search,setSearch,showSearch,setShowSearch,
+        cartItems,addToCart,getCartCount, updateQuantity
 
     }
     return (
