@@ -4,13 +4,17 @@ import ProductItem from './ProductItem'
 import Title from './Title'
 
 const BestSeller = () => {
+
     const {products}=useContext(ShopContext)
     const [bestSeller,setBestSeller]=useState([])
+    
     useEffect(()=>{
-        const bestProducts=products.filter((item)=>item.bestseller)
+
+        const bestProducts=products.filter((item)=>(item.bestSeller))
         setBestSeller(bestProducts)
-    },[])
-    console.log(bestSeller)
+
+    },[products])
+    
   return (
     
     <div className='my-10'>
