@@ -16,7 +16,6 @@ console.log(size)
     products.filter((item)=>{
       if(item._id==productId){
         setProductData(item)
-        console.log('Clicked on:',item)
         setImage(item.image[0])
         return null;
       }
