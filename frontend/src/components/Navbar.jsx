@@ -65,11 +65,10 @@ const Navbar = () => {
             <p className='text-xl'>Back</p>
           </div>
           <NavLink className='py-2 pl-6 shadow-md' onClick={()=>setVisible(false)} to='/'>HOME</NavLink>
-          <NavLink className='py-2 pl-6 shadow-md' onClick={()=>setVisible(false)} to='/collection'>COLLECTION</NavLink>
+          <NavLink className='py-2 pl-6 shadow-md' onClick={()=>setVisible(false)} to='/collections'>COLLECTION</NavLink>
           <NavLink className='py-2 pl-6 shadow-md' onClick={()=>setVisible(false)} to='/about'>ABOUT</NavLink>
           <NavLink className='py-2 pl-6 shadow-md' onClick={()=>setVisible(false)} to='/contact'>CONTACT</NavLink>
         </div>
-
       </div>
     </div>
   )
