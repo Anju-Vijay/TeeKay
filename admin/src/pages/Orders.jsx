@@ -15,18 +15,15 @@ const Orders = ({token}) => {
     try {
       const response=await axios.post(backendUrl  + "/api/order/list" ,{},{headers:{token}})
       if(response.data.success){
-        setOrders(response.data.orders)
+        setOrders(response.data.orders.reverse())
       }else{
         toast.error(error.message)
-      }
-            
+      }       
     } catch (error) {
       console.log(error)
       toast.error(response.data.message)
-      
     }
   }
-
   const statusHandler=async(event,orderId)=>{
     try {
       const response=await axios.post(backendUrl+'/api/order/status', {orderId,status: event.target.value},{headers:{token}})
