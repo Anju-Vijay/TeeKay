@@ -64,15 +64,13 @@ const PlaceOrder = () => {
     try {
       const orderItems=[]
       for(const items in cartItems){
-        for(const item in cartItems[items]){
-          if(cartItems[items][item] > 0){
+          if(cartItems[items] > 0){
             const itemInfo=structuredClone(products.find(product=>product._id===items))
             if(itemInfo){
-              itemInfo.size=item
-              itemInfo.quantity=cartItems[items][item]
+              itemInfo.quantity=cartItems[items]
               orderItems.push(itemInfo)
+              console.log("orderItems to be sent:", orderItems);
             }
-          }
 
         }
 

@@ -3,8 +3,10 @@ import userModel from '../models/userModel.js'
 import Stripe from 'stripe'
 import razorpay from 'razorpay'
 
+
+
 // Global Variables
-const currency ='AED'
+const currency ='INR'
 const deliveyCharge=10
 
 //Gateway Initialize
@@ -18,7 +20,7 @@ const razorpayInstance=new razorpay({
 const placeOrder=async(req,res)=>{
     try {
         const {userId,items,address,amount}=req.body
-
+        console.log("Received items in backend:", items);
         const orderData={
             userId,
             items,
@@ -28,6 +30,8 @@ const placeOrder=async(req,res)=>{
             payment:false,
             date:Date.now()
         }
+        
+        console.log("Order data to be saved:", orderData);
         const newOrder= new orderModel(orderData)
         await newOrder.save()
 
@@ -197,6 +201,7 @@ const allOrders = async(req,res)=>{
 const userOrders = async(req,res)=>{
     try {
         const {userId}=req.body
+        console.log("userId:", userId)
         const orders=await orderModel.find({userId})
         res.json({success:true, orders})
     } catch (error) {

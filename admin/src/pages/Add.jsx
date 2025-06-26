@@ -13,10 +13,9 @@ const[image4, setimage4]=useState(false)
   const[name,setName]=useState("")
   const[description, setDescription]=useState("")
   const[price,setPrice]=useState("")
-  const[category,setCategory]=useState("Men")
-  const[subCategory,setSubCategory]=useState("Topwear")
+  const[category,setCategory]=useState("Earings")
+  const[subCategory,setSubCategory]=useState("Golden")
   const[bestSeller,setBestSeller]=useState(false)
-  const[sizes,setSizes]=useState([])
 
 const onSubmitHandler=async(e)=>{
   e.preventDefault()
@@ -29,7 +28,7 @@ const onSubmitHandler=async(e)=>{
     formData.append("category",category)
     formData.append("subCategory",subCategory)
     formData.append("bestSeller",bestSeller)
-    formData.append("sizes",JSON.stringify(sizes))
+    
     
     image1 && formData.append("image1",image1)
     image2 && formData.append("image2",image2)
@@ -106,18 +105,18 @@ const onSubmitHandler=async(e)=>{
           <div className="mt-4 w-full">
             <p className="mb-2">Product Category</p>
             <select onChange={(e)=>setCategory(e.target.value)} value={category} className="w-full px-3 py-2 ">
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-              <option value="Kids">Kids</option>
+              <option value="Earings">Earings</option>
+              <option value="Necklace">Necklace</option>
+              <option value="Bangles">Bangles</option>
             </select>
           </div>
           
           <div className="mt-4 w-full">
             <p className="mb-2">Sub Category</p>
             <select onChange={(e)=>setSubCategory(e.target.value)} value={subCategory} className="w-full px-3 py-2">
-              <option value="Topwear">Topwear</option>
-              <option value="Bottomwear">Bottomwear</option>
-              <option value="Winterwear">Winterwear</option>
+              <option value="Golden">Golden</option>
+              <option value="Silver">Silver</option>
+              <option value="Rosegold">Rose Gold</option>
             </select>
           </div>
           <div className="mt-4 w-full">
@@ -129,27 +128,6 @@ const onSubmitHandler=async(e)=>{
             />
           </div>
         </div>
-        <div>
-          <p className="mb-2">Product Sizes</p>
-          <div className="flex gap-3">
-            <div onClick={()=>setSizes(prev=>prev.includes("S")? prev.filter(item=>item!="S"):[...prev,"S"])}>
-              <p className={`${sizes.includes("S") ? "bg-pink-100" : " bg-slate-200" } px-3 py-1 cursor-pointer`}>S</p>
-            </div>
-              <div onClick={()=>setSizes(prev=>prev.includes("M")? prev.filter(item=>item!="M"):[...prev,"M"])}>
-              <p className={`${sizes.includes("M") ? "bg-pink-100" :  "bg-slate-200" } px-3 py-1 cursor-pointer`}> M</p>
-            </div>
-              <div onClick={()=>setSizes(prev=>prev.includes("L")? prev.filter(item=>item!="L"):[...prev,"L"])}>
-              <p className={`${sizes.includes("L") ? "bg-pink-100" :  "bg-slate-200" } px-3 py-1 cursor-pointer`}>L</p>
-            </div>
-            <div onClick={()=>setSizes(prev=>prev.includes("XL")? prev.filter(item=>item!="XL"):[...prev,"XL"])}>
-              <p className={`${sizes.includes("XL") ? "bg-pink-100" :  "bg-slate-200" } px-3 py-1 cursor-pointer`}>XL</p>
-            </div>
-            <div onClick={()=>setSizes(prev=>prev.includes("XXL")? prev.filter(item=>item!="XXL"):[...prev,"XXL"])}>  
-              <p className={`${sizes.includes("XXL") ? "bg-pink-100" :  "bg-slate-200" } px-3 py-1 cursor-pointer`}>XXL</p>
-            </div>
-          </div>
-        </div>
-
         <div className="flex gap-2 mt-2">
           <input onChange={()=>setBestSeller(prev=>!prev)} checked={bestSeller} type="checkbox" id="bestseller"/>
           <label className="cursor-pointer" htmlFor="bestseller">Add to best seller</label>

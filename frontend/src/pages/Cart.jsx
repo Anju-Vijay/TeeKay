@@ -13,17 +13,14 @@ const Cart = () => {
 
       const temp=[];
       for(const items in cartItems){
-        for(const item in cartItems[items]){
-          if(cartItems[items][item]>0){
+          if(cartItems[items]>0){
 
             temp.push(
               {
                 _id:items,
-                size:item,
-                quantity:cartItems[items][item]
+                quantity:cartItems[items]
               }
           )
-        }
       }
     }
     setCartData(temp)
@@ -48,12 +45,11 @@ const Cart = () => {
                     <p className='text-xs sm:text-lg font-medium'>{productsData.name}</p>
                     <div className='flex items-center gap-5 mt-2'>
                       <p>{currency}{productsData.price}</p>
-                      <p className='px-2 sm:px-3 sm:py-1 border  bg-slate-100'>{item.size}</p>
                     </div>
                   </div> 
                 </div>
-                <input onChange={(e)=>e.target.value=='' || e.target.value=='0' ? 'null': updateQuantity(item._id,item.size,Number(e.target.value))}  className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' type='number' min={1} defaultValue={item.quantity} />
-                <img onClick={()=>updateQuantity(item._id, item.size, 0)} className='w-4 mr-4 sm:w-5 cursor-pointer' src={assets.bin_icon} alt="" />
+                <input onChange={(e)=>e.target.value=='' || e.target.value=='0' ? 'null': updateQuantity(item._id,Number(e.target.value))}  className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' type='number' min={1} defaultValue={item.quantity} />
+                <img onClick={()=>updateQuantity(item._id, 0)} className='w-4 mr-4 sm:w-5 cursor-pointer' src={assets.bin_icon} alt="" />
               </div>
 
             )
