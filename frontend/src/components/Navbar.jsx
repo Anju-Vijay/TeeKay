@@ -51,10 +51,18 @@ const Navbar = () => {
           </div>
           }
         </div>
+        {getCartCount() > 0 ? (
         <Link to='/cart' className='relative'>
           <img  className='w-4 min-w-4 cursor-pointer' src={assets.cart_icon} alt="cart icon" />
           <p className='absolute text-[8px] bg-black text-white aspect-square rounded-full  right-[-5px] top-[12px] w-4 text-center leading-4 '>{getCartCount()}</p>
         </Link>
+        ):(
+          <div className='relative cursor-not-allowed' title="Cart is empty, Please Add Items">
+          <img className='w-4 min-w-4 ' src={assets.cart_icon} alt="cart icon" />
+          <p className='absolute text-[8px] bg-black text-white aspect-square rounded-full  right-[-5px] top-[12px] w-4 text-center leading-4'>0</p>
+          </div>
+      
+        )}
         <img onClick={()=>setVisible(true)} className='w-4 sm:hidden cursor-pointer' src={assets.menu_icon} alt='Menu icon'/>
       </div>
       {/* Sidebar menu for small screens*/}
